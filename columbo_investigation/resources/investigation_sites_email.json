@@ -1,0 +1,22 @@
+{
+    "Naver Blog": {
+        "url": "https://blog.naver.com/{}",
+        "confirm": "status_code",
+        "method": "GET",
+        "success": 200,
+        "fail": 404
+    },
+    "KaKao Story": {
+        "url": "https://story.kakao.com/{}",
+        "confirm": "include",
+        "method": "GET",
+        "success": "userid"
+    },
+    "Tistory": {
+        "url": "https://{}.tistory.com/",
+        "confirm": "status_code",
+        "method": "GET",
+        "success": 200,
+        "fail": 404
+    }
+}
