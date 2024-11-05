@@ -38,10 +38,18 @@ def investigate_with_userid(sites, args):
             continue
 
 def investigate_with_email(sites, args):
-    pass
-    # for site, info in sites.items():
-    #     # method
-        
+    for site, info in sites.items():
+        # method
+        if info["method"] == "GET":
+            site_url = info["confirm_url"].format(args.user_info)
+            request = requests.get(site_url)
+        elif info["method"] == "POST":
+            site_url = info["confirm_url"].format(args.user_info)
+            if info["body type"] == "form":
+                print(info["body"])
+                print(info["body"].format(args.user_info))
+                request = requests.post(site_url, data=json.loads(info["body"].format(args.user_info)))
+            request = requests.get(site_url)
         
 
 
