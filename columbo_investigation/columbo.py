@@ -20,7 +20,7 @@ def investigate_with_userid(sites, args):
     for site, info in sites.items():
         # method
         if info["method"] == "GET":
-            site_url = info["url"].format(args.user_info)
+            site_url = info["confirm_url"].format(args.user_info)
             request = requests.get(site_url)
         elif info["method"] == "POST":
             pass
@@ -28,10 +28,13 @@ def investigate_with_userid(sites, args):
         # confirm
         if info["confirm"] == "include":
             if info["success"] == "userid" and args.user_info in request.text:
-                user_found_print(site, site_url)
+                user_found_print(site, info["url"].format(args.user_info))
+                continue
+            elif info["success"] != "userid" and info["success"] in request.text:
+                user_found_print(site, info["url"].format(args.user_info))
                 continue
         elif info["confirm"] == "status_code" and info["success"] == request.status_code:
-            user_found_print(site, site_url)
+            user_found_print(site, info["url"].format(args.user_info))
             continue
 
 def investigate_with_email(sites, args):
