@@ -1,18 +1,30 @@
 # Columbo
-Korean specific social media hunter Columbo
+Hunt down korean specific social media with username, email
 
 ## Usage
 
 ### Windows
 ```bash
 cd columbo_investigation
+```
+```bash
 python __main__.py "user_id"
+```
+or
+```bash
+python __main__.py -e "email"
 ```
 
 ### Linux
 ```bash
 cd columbo_investigation
-python3 __main__.py "user_id"
+```
+```bash
+python __main__.py "user_id"
+```
+or
+```bash
+python __main__.py -e "email"
 ```
 
 ## License
