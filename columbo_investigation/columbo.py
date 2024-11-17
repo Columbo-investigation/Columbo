@@ -56,7 +56,6 @@ def investigate_with_userid(sites, args):
             print(f"Error occurred: {e}")
             continue
             
-
         # confirm
         if info["confirm"] == "include":
             if info["success"] == "userid" and args.user_info in request.text:
