@@ -41,7 +41,8 @@
         "url": "https://www.tiktok.com/@{}",
         "confirm_url": "https://www.mediamister.com/get_tiktok_userid",
         "method": "POST",
-        "data": "{\"username\": {username}}",
+        "data": {"username": {}},
+        "key": "username",
         "confirm": "include",
         "success": "handle_available"
     }
