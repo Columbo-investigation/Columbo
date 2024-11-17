@@ -71,16 +71,19 @@ def investigate_with_userid(sites, args):
 def investigate_with_email(sites, args):
     header = get_headers()
     for site, info in sites.items():
-        # method
-        if info["method"] == "GET":
-            site_url = info["confirm_url"].format(quote(args.user_info))
-            request = requests.get(site_url, headers=header)
-        # elif info["method"] == "POST":
-        #     site_url = info["confirm_url"].format(args.user_info)
-        #     if info["body type"] == "form":
-        #         print(info["body"])
-        #         print(info["body"].format(args.user_info))
-        #         request = requests.post(site_url, data=json.loads(info["body"].format(args.user_info)))
+        try:
+            # method
+            if info["method"] == "GET":
+                site_url = info["confirm_url"].format(quote(args.user_info))
+                request = requests.get(site_url, headers=header)
+            elif info["method"] == "POST":
+                site_url = info["confirm_url"].format(args.user_info)
+                data = info["data"]
+                data[info["json_key"]] = args.user_info
+                request = requests.post(site_url, data=data, headers=header)
+        except Exception as e:
+            print(f"Error occurred: {e}")
+            continue
         
         # confirm
         if info["confirm"] == "include":
