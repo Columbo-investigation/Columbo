@@ -50,13 +50,12 @@ def investigate_with_userid(sites, args):
             elif info["method"] == "POST":
                 site_url = info["confirm_url"].format(args.user_info)
                 data = info["data"]
-                data[info["key"]] = args.user_info
+                data[info["json_key"]] = args.user_info
                 request = requests.post(site_url, data=data, headers=header)
         except Exception as e:
             print(f"Error occurred: {e}")
             continue
             
-
         # confirm
         if info["confirm"] == "include":
             if info["success"] == "userid" and args.user_info in request.text:
