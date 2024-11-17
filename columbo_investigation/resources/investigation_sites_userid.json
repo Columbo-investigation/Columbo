@@ -36,5 +36,13 @@
         "method": "GET",
         "success": 200,
         "fail": 404
+    },
+    "TikTok": {
+        "url": "https://www.tiktok.com/@{}",
+        "confirm_url": "https://www.mediamister.com/get_tiktok_userid",
+        "method": "POST",
+        "data": "{\"username\": {username}}",
+        "confirm": "include",
+        "success": "handle_available"
     }
 }

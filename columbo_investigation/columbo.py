@@ -19,11 +19,15 @@ def user_found_print(site, site_url):
 def investigate_with_userid(sites, args):
     for site, info in sites.items():
         # method
+        if args.test != site:
+            continue
         if info["method"] == "GET":
             site_url = info["confirm_url"].format(args.user_info)
             request = requests.get(site_url)
         elif info["method"] == "POST":
-            pass
+            site_url = info["confirm_url"].format(args.user_info)
+            data = json.loads(info["data"].replace("{username}", '"'+args.user_info+'"'))
+            request = requests.post(site_url, data=data)
 
         # confirm
         if info["confirm"] == "include":
@@ -75,6 +79,12 @@ def main():
         action='store_true',
         help='Enable email mode.',
         default=False
+    )
+    parser.add_argument(
+        '--test','-t',
+        action='store',
+        help='Test speficied site.',
+        default=None
     )
 
     # 인수 파싱
