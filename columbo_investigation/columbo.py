@@ -39,11 +39,12 @@ def investigate_with_userid(sites, args):
             continue
 
 def investigate_with_email(sites, args):
+    header = get_headers()
     for site, info in sites.items():
         # method
         if info["method"] == "GET":
             site_url = info["confirm_url"].format(quote(args.user_info))
-            request = requests.get(site_url)
+            request = requests.get(site_url, headers=header)
         # elif info["method"] == "POST":
         #     site_url = info["confirm_url"].format(args.user_info)
         #     if info["body type"] == "form":
