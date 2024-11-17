@@ -1,3 +1,12 @@
 {
-    
+    "X": {
+        "url": "https://x.com",
+        "confirm_url": "https://api.x.com/i/users/email_available.json?email={}",
+        "method": "GET",
+        "confirm": "include",
+        "form": "json",
+        "key": "valid",
+        "success": false,
+        "fail": true
+    }
 }
