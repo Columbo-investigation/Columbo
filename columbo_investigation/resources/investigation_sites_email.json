@@ -8,5 +8,17 @@
         "key": "valid",
         "success": false,
         "fail": true
+    },
+    "Everytime": {
+        "url": "https://everytime.com",
+        "confirm_url": "https://account.everytime.kr/api/save/forgot/userid",
+        "method": "POST",
+        "data": {"email":{}},
+        "confirm": "include",
+        "form": "json",
+        "json_key": "email",
+        "key": "status",
+        "success": "success",
+        "fail": "not_exists_user"
     }
 }
