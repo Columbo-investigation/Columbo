@@ -41,8 +41,6 @@ def investigate_with_userid(sites, args):
     for site, info in sites.items():
         # method
         try:
-            if args.test != site:
-                continue
             if info["method"] == "GET":
                 site_url = info["confirm_url"].format(args.user_info)
                 request = requests.get(site_url, headers=header)
