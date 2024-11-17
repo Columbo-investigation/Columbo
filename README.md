@@ -1,5 +1,5 @@
 # Columbo
-Hunt down korean specific social media with username, email
+Discover Social Media Accounts Across Popular Korean Platforms with username, email.
 
 ## Usage
 
