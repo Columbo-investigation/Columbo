@@ -12,6 +12,7 @@
         "confirm_url": "https://story.kakao.com/{}",
         "confirm": "include",
         "method": "GET",
+        "form": "str",
         "success": "userid"
     },
     "Tistory": {
@@ -27,6 +28,7 @@
         "confirm_url": "https://asked.kr/{}",
         "confirm": "include",
         "method": "GET",
+        "form": "str",
         "success": "og:title"
     },
     "Instagram": {

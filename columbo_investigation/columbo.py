@@ -2,6 +2,7 @@ import argparse
 from __init__ import __longname__, __shortname__, __version__, __author__
 import json
 import requests
+from urllib.parse import quote
 # ArgumentParser 객체 생성
 
 def get_sites(email: bool) -> dict:
@@ -41,17 +42,22 @@ def investigate_with_email(sites, args):
     for site, info in sites.items():
         # method
         if info["method"] == "GET":
-            site_url = info["confirm_url"].format(args.user_info)
+            site_url = info["confirm_url"].format(quote(args.user_info))
             request = requests.get(site_url)
-        elif info["method"] == "POST":
-            site_url = info["confirm_url"].format(args.user_info)
-            if info["body type"] == "form":
-                print(info["body"])
-                print(info["body"].format(args.user_info))
-                request = requests.post(site_url, data=json.loads(info["body"].format(args.user_info)))
-            request = requests.get(site_url)
+        # elif info["method"] == "POST":
+        #     site_url = info["confirm_url"].format(args.user_info)
+        #     if info["body type"] == "form":
+        #         print(info["body"])
+        #         print(info["body"].format(args.user_info))
+        #         request = requests.post(site_url, data=json.loads(info["body"].format(args.user_info)))
         
-
+        # confirm
+        if info["confirm"] == "include":
+            if info["form"]=="json":
+                request = request.json()
+                if request[info["key"]] == info["success"]:
+                    user_found_print(site, info["url"].format(args.user_info))
+                    continue
 
 def main():
     parser = argparse.ArgumentParser(

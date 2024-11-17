@@ -1,12 +1,12 @@
 {
-    "Naver": {
-        "url": "https://www.naver.com/",
-        "confirm_url": "https://nid.naver.com/user2/help/pwInquiry?m=actionInputUserId",
-        "confirm": "status_code",
-        "method": "POST",
-        "body type": "form",
-        "body": "{\"userId\": \"{}\"}",
-        "success": 200,
-        "fail": 404
+    "X": {
+        "url": "https://x.com",
+        "confirm_url": "https://api.x.com/i/users/email_available.json?email={}",
+        "method": "GET",
+        "confirm": "include",
+        "form": "json",
+        "key": "valid",
+        "success": false,
+        "fail": true
     }
 }
