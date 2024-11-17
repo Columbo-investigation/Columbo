@@ -42,7 +42,7 @@
         "confirm_url": "https://www.mediamister.com/get_tiktok_userid",
         "method": "POST",
         "data": {"username": {}},
-        "key": "username",
+        "json_key": "username",
         "confirm": "include",
         "success": "handle_available"
     }
